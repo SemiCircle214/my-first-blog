@@ -1,0 +1,137 @@
+{% load static %}
+
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Heroic Features - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/heroic-features.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/good_list.css' %}">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">문구0</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">문구1</h1>
+      <p class="lead">문구2</p>
+        <p><b>문구3</b></p>
+      <!--<a href="#" class="btn btn-primary btn-lg">Call to action!</a>-->
+    </header>
+
+    <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-6">
+                <div class="card">
+                    <img class="card-img-top" src="../../{{dash.img_src}}" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">{{dash.good_name}}</h4>
+                        <p class="card-text">남은 수량 : {{dash.inventory}}</p>
+                        <p class="card-text">작성 후 입금까지되어야 신청완료됩니다.</p>
+                        <p class="card-text">국민 123123</p>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+
+      <!--구매 작성 폼-->
+      <div class="col-lg-9 col-md-6 mb-6">
+            <div class="signup-form">
+
+              <form method="post">{% csrf_token %}
+                <label name="good_name" value="{{dash.good_name}}"></label> <!--왜 안넘어오지?-->
+                <h2>구매 신청</h2>
+                <p class="hint-text">작성 후 변경이 불가하니 신중히 작성하세요.</p>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="order_name" placeholder="이름 (실명을 적으세요)" required="required">
+                </div>
+
+                <div class="form-group">
+                  <input type="email" class="form-control" name="order_email" placeholder="이메일 ex) abc@naver.com" required="required">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="order_phone" placeholder="연락처 ex) 010-1234-5678" required="required" pattern="(010)-\d{3,4}-\d{4}">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="order_addr1" placeholder="주소 ex) 경기도 성남시 분당구 운중동 포도아파트" required="required">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="order_addr2" placeholder="상세주소 ex) 102동 302호" required="required">
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control" name="order_ea" placeholder="구매 수량" required="required">
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline"><input type="checkbox" required="required"> 연락처와 배송지 등이 정확함을 확인하였습니다. </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline"><input type="checkbox" required="required"> 입금 계좌 : 국민123123를 확인하였습니다.</label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline"><input type="checkbox" required="required"> 20:00까지 입금이 안되면 구매 취소됨을 확인하였습니다.</label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline"><input type="checkbox" required="required"> 작성 이후 구매 신청서를 변경불가함을 확인하였습니다.</label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline"><input type="checkbox" required="required"> 허위 작성 적발시 다음 구매신청이 불가함을 확인하였습니다.</label>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success btn-lg btn-block">구매 신청 최종 완료</button>
+                </div>
+              </form>
+
+            </div>
+      </div>
+    <!-- Page Features -->
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+    <h1>New post</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">SemiCricle @ Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+
+</html>
